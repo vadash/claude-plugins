@@ -11,7 +11,7 @@
   "plugins": [
     {
       "name": "claude-md-management",
-      "source": "claude-md-management",
+      "source": "./claude-md-management",
       "description": "Tools to maintain and improve CLAUDE.md files - audit quality, capture session learnings, and keep project memory current.",
       "version": "1.0.0"
     }
