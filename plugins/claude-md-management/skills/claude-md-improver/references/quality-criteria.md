@@ -53,6 +53,8 @@
 - No filler or obvious info
 - Each line adds value
 - No redundancy with code comments
+- No duplication across CLAUDE.md files
+- Root CLAUDE.md is shortest — details pushed to subdirectory files
 
 **10 points**: Mostly concise, some padding
 
@@ -107,3 +109,4 @@
 - Generic advice not specific to the project
 - "TODO" items never completed
 - Duplicate info across multiple CLAUDE.md files
+- Root CLAUDE.md longer than subdirectory CLAUDE.md files

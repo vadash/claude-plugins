@@ -61,6 +61,15 @@ Why: Establishes patterns that work.
 
 Why: Environment-specific knowledge.
 
+## Token Budget Awareness
+
+Root `CLAUDE.md` is injected into **every turn**, making it the most expensive
+file per token. Subdirectory CLAUDE.md files are only loaded when relevant.
+
+**Rule:** The root CLAUDE.md should be the shortest file in the project. Push
+details into subdirectory CLAUDE.md files and keep only navigation hints and
+critical rules at the root.
+
 ## What NOT to Add
 
 ### 1. Obvious Code Info
@@ -91,7 +100,28 @@ We fixed a bug in commit abc123 where the login button didn't work.
 
 Won't recur; clutters the file.
 
-### 4. Verbose Explanations
+### 4. Duplicate Content Across CLAUDE.md Files
+
+Bad:
+```markdown
+# In both ./CLAUDE.md AND ./packages/api/CLAUDE.md:
+Auth uses JWT with HS256. Tokens expire after 24h.
+```
+
+Good:
+```markdown
+# ./CLAUDE.md — only mention that auth exists:
+Auth: JWT-based, see `packages/api/CLAUDE.md` for details.
+
+# ./packages/api/CLAUDE.md — full details here:
+Auth: JWT with HS256, 24h expiry, refresh tokens in `src/auth/refresh.ts`.
+```
+
+**Rule:** If the same info appears in multiple CLAUDE.md files, keep it in the
+most specific file and reference it from parent files. Duplicated content
+wastes tokens across every relevant turn.
+
+### 5. Verbose Explanations
 
 Bad:
 ```markdown
